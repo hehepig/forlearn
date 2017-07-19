@@ -1,0 +1,14 @@
+
+bool Hungary(int u){
+	for(int i=0;i<a[u].size();i++) {
+		int o=a[u][i];
+		if (!search[o]) {
+			search[o]=true;
+			if (result[o] ==0 || Hungary(result[o])) {
+				result[o]=u;
+				return true;
+			}
+		}
+	}
+	return false;
+}
