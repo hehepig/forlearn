@@ -1,0 +1,21 @@
+struct point{
+	int a,num;
+};
+vector<point> p[10000];
+queue<int> po;
+int spfa(int a){
+	po.push(a);
+	vis[a]=true;
+	while(!po.empty()) {
+		int np=po.front(); po.pop(); vis[np]=false;
+		for (vector<point>::iterator iter=p[np].begin();iter!=p[np].end();++iter) {
+			if (d[iter->a]>d[np]+iter->num) {
+				d[iter->a]=d[np]+iter->num;
+				if(!vis[iter->a]) {
+					vis[iter->a]=true;
+					po.push(iter->a);
+				}
+			}
+		}
+	}
+} 
