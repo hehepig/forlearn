@@ -1,0 +1,20 @@
+void cr(){
+	int k=0;
+	Next[0]=0;
+	for (int i2=2;i2<=lb;i2++) {
+		while(k>0 && b[i2]!=b[1+k]) k=Next[k];
+		if (b[i2] == b[k+1]) k++;
+		Next[i2]=k;
+	}
+}
+void ch(){
+	int p=0;
+	for (int i1=1;i1<=la;i1++) {
+		while(p>0 && a[i1]!=b[p+1]) p=Next[p];
+		if (a[i1] == b[p+1]) p++;
+		if (p == lb) {
+			p=Next[p];
+			ans++;
+		}
+	}
+}
